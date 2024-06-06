@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="app">
+
+    </div>
+    <ul class="btn">
+    </ul>
+</body>
+<script>
+    class Content {
+        title = ""
+        value = ""
+        constructor(_title, _value) {
+            this.title = _title;
+            this.value = _value
+        }
+    }
+    let contents = [];
+    for (let i = 0; i < 52; i++) {
+        contents.push(new Content(`제목${i}`, `내용${i}`))
+    }
+
+    let index = 1;
+    let viewItemCount = 5;
+    console.log(viewItemCount + (viewItemCount * index))
+    for (let i = (viewItemCount * index); i < viewItemCount + (viewItemCount * index); i++) {
+        if (i >= contents.length) continue;
+        const div = document.createElement("div");
+        const span = document.createElement("span");
+        const span2 = document.createElement("span");
+        span.innerHTML = contents[i].title
+        span2.innerHTML = contents[i].value
+        div.append(span, span2);
+        document.querySelector(".app").append(div);
+    }
+
+    for (let i = 0; i < Math.ceil(contents.length / viewItemCount); i++) {
+        const button = document.createElement("button");
+        button.innerHTML = i + 1;
+        button.onclick = function () {
+            index = i;
+            for (let i = (viewItemCount * index); i < viewItemCount + (viewItemCount * index); i++) {
+                if (i >= contents.length) continue;
+                const div = document.createElement("div");
+                const span = document.createElement("span");
+                const span2 = document.createElement("span");
+                span.innerHTML = contents[i].title
+                span2.innerHTML = contents[i].value
+                div.append(span, span2);
+                document.querySelector(".app").append(div);
+            }
+        }
+        document.querySelector(".btn").append(button);
+    }
+</script>
+
+</html>

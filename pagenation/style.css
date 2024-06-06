@@ -1,0 +1,63 @@
+*{margin:0; padding:0;}
+
+ol,ul,li {
+  list-style: none;
+}
+
+#content{
+  width: 1200px;
+  margin: 60px auto;
+}
+
+#content .boardList{
+  width: 100%;
+}
+
+#content .boardList li{
+  height: 50px;
+  border:1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnArea{
+  display: flex;
+  justify-content: center;
+}
+
+.btnArea .btn{
+  width: 30px;
+  height: 30px;
+  border:none;
+  background-color: black;
+  color:#fff;
+  margin:0 5px;
+}
+
+.btnArea ol{
+  display: flex;
+  justify-content: center;
+}
+
+.numberBtn{
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color:#fff;
+  margin:0 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-num{
+  width: 30px;
+  height: 30px;
+  margin:0 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color:#fff;
+}

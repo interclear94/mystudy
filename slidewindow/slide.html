@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .swiper-wrap{
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    } 
+
+    .swiper-content{
+      display: flex;
+      width: max-content;
+      height: 100%;
+      position: absolute;
+      transition: left 1s;
+    } 
+
+    ul,li{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .swiper-wrap .swiper-item{
+      width: 300px;
+      height: 100%;
+      display: flex;
+      font-size: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+
+  </style>
+</head>
+<body>
+    <div>
+      <div class="swiper-wrap">
+        <ul class="swiper-content">
+          <li class="swiper-item" style="background-color: blue;">1</li>
+          <li class="swiper-item" style="background-color: antiquewhite;">2</li>
+          <li class="swiper-item" style="background-color: aqua;">3</li>
+          <li class="swiper-item" style="background-color: bisque;">4</li>
+        </ul>
+      </div>
+      <button class="prve">prev</button>
+      <button class="next">next</button>
+    </div>
+</body>
+<script>
+  const swiperContent = document.querySelector(".swiper-content");       
+  const prve = document.querySelector(".prve");
+  const next = document.querySelector(".next");
+  let index = 0;
+  let isActive = false;
+  init();
+  function init () {
+    swiperContent.style.left = "-300px";
+    const {length} = swiperContent.children;
+    console.log(length)
+    const firstEl = swiperContent.children[length - 1].cloneNode(true)
+    const lastEl = swiperContent.children[0].cloneNode(true)
+    swiperContent.children[0].before(firstEl);
+    swiperContent.append(lastEl);
+  }
+  next.onclick = () => {
+    if(isActive) return 
+    isActive = true;
+    index++;
+    swiperContent.style.left = `${-300 + (-300 * index)}px`;
+  }
+  swiperContent.addEventListener("transitionend",()=>{
+    if(index === 4){
+      index = 0;
+      swiperContent.style.transition = "none"
+      swiperContent.style.left = `-300px`;
+      setTimeout(()=>{
+        swiperContent.style.transition = "left 1s"
+      }, 500)
+    }
+    setTimeout(()=>{
+      isActive = false;
+    },500)
+  })
+  swiperContent.addEventListener("transitionend",()=>{
+    if(index === -1){
+      index = 3;
+      swiperContent.style.transition = "none"
+      swiperContent.style.left = `${-300 + (-300 * index)}px`;
+      setTimeout(()=>{
+        swiperContent.style.transition = "left 1s"
+      }, 500)
+    }
+    setTimeout(()=>{
+      isActive = false;
+    },500)
+  })
+  
+  prve.onclick = () => {
+    if(isActive) return
+    isActive = true 
+    index--;
+    swiperContent.style.left = `${-300 + (-300 * index)}px`;
+  }
+</script>
+</html>
