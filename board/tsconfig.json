@@ -1,0 +1,13 @@
+{
+  "include" : [
+    "src/**/*"
+  ],
+  "exclude" : [
+    "**/*.test.ts"
+  ],
+  "compilerOptions": { 
+    "target": "es2016",
+    "outDir": "./dist",
+    // "removeComments": true                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+  }
+}
