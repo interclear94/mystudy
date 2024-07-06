@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Server</title>
+</head>
+<body>
+  <!-- enctype="multipart/form-data" 바이너리 형식으로 저송 -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="myFile" accept="Image/*">
+    <button type="submit">전송</button>
+  </form>
+</body>
+</html>
