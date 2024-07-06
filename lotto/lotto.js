@@ -13,7 +13,7 @@ btn.onclick = () => {
     let num = lottoRandom[randomNum]
     lottoRandom.splice(randomNum, 1);
     resultBox.push(num);
-
+    resultBox.sort(function(a,b){ return a-b });
     const _li = document.createElement("li");
     _li.innerHTML = num;
 
